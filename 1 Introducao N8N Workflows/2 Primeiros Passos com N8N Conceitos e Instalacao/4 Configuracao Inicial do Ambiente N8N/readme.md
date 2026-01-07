@@ -23,10 +23,12 @@ Clique na opção **Download Docker Desktop** na [**página oficial para instala
 * Foi utilizado o **pull** da imagem **n8nio/n8n**
 * Na aba **Imagens**, selecione a imagen **n8nio/n8n** e clique em **run**.
 * Na caixa de diálogo adicione as sequintes **configurações opcionais**:
+    * **Optional settings:**
+        * **Container name:** n8n;
     * **Ports:** 
         * **Host port:** 5678;
     * **Volumes:** 
-        * **Host path:** (selecione um diretório para esta finalidade);
+        * **Host path:** /Docker/docker_n8n;
         * **Container path:** /home/node/.n8n;
     * **Environment variables:**
         * **Variable:** GENERIC_TIMEZONE=America/Sao_Paulo;
