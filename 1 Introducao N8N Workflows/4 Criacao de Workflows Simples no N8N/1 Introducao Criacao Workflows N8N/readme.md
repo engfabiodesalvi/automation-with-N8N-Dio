@@ -1,5 +1,5 @@
 # Criação de Workflows Simples no N8N
-Como Você Vai Dominar Criação de WorkFlows Simples no **N8N**.
+Como Você Vai Dominar a Criação de WorkFlows Simples no **N8N**.
 
 Até agora:
 * **Instalação do Ambiente**
