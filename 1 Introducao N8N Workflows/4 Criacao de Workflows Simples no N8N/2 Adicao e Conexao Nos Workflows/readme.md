@@ -39,6 +39,6 @@ Os gatilhos podem ser:
     * **chatInput:** Valor enviado ao chat.
  Todo nó tem uma **input**, um **processing** e um **output**. O **output** de um nó é conectado no **input do próximo nó.
 
-* Pressione `Tab` novamente e adicione um **Edit Filds (Set)** para Modificar, adicionar ou remover itens da saída do nó anterior.
+* Pressione `Tab` novamente e adicione **Data transformation** > **Edit Fields (Set)** para Modificar, adicionar ou remover itens da saída do nó anterior.
 
 
