@@ -16,13 +16,13 @@ Modifique o nó **Swith** para ter a seguinte classificação baseada na oscila�
             * **value1:** `{{ $json.valor_convertido }}`
             * **condition:** `# is greater than`
             * **value2:** `5.95`
-            * **Rename Outiput** (selected)
+            * **Rename Output** (selected)
                 * **Output Name:** `Não Comprar`
             
         * **Rule 2** (Click on `Add Route Rule`)
             * **value1:** `{{ $json.valor_convertido }}`
             * **condition:** `# is less than or equal to`
             * **value2:** `5.95`
-            * **Rename Outiput** (selected)
+            * **Rename Output** (selected)
                 * **Output Name:** `Comprar muito`
                         
