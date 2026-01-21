@@ -1,0 +1,287 @@
+{
+  "name": "Nodes Centrais - DIO - 4",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Tecnologia",
+        "height": 224,
+        "width": 192,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -576,
+        -176
+      ],
+      "typeVersion": 1,
+      "id": "96c539bc-1c3a-4f15-bd2f-8386ad1db20c",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Financeiro",
+        "height": 224,
+        "width": 224
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -368,
+        -176
+      ],
+      "typeVersion": 1,
+      "id": "ba69cf0a-8fd7-401c-b8d7-21b96fcdf3d6",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "nova_transacao",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -528,
+        -128
+      ],
+      "id": "e8b834f1-85e2-47e0-8151-6bf0525787ce",
+      "name": "Monitora par-moedas",
+      "webhookId": "adbc4102-7726-4aa8-b258-370ea1b712e2"
+    },
+    {
+      "parameters": {
+        "url": "=https://economia.awesomeapi.com.br/last/{{ $json.body['par-moeda'] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -304,
+        -128
+      ],
+      "id": "f17878de-fc61-4707-8a64-175054d8c9fd",
+      "name": "Consultar cotação do par-moeda"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5ea37fb6-137e-4c05-901c-9e1562239557",
+              "name": "valor_convertido",
+              "value": "={{ $json.USDBRL.bid.toNumber().round(2) }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -96,
+        -128
+      ],
+      "id": "fc412383-d0d8-412a-a3cb-7238b5fb47c0",
+      "name": "Conversão Dolar x Real"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "3b515bca-6f0c-450d-a12f-b52180ad2495",
+              "leftValue": "={{ $json.valor_convertido }}",
+              "rightValue": 5.25,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        128,
+        -240
+      ],
+      "id": "b303a476-0131-428e-b160-a15a468c6e98",
+      "name": "Dolar acima de 5.25?"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.valor_convertido }}",
+                    "rightValue": 5.6,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gt"
+                    },
+                    "id": "b889c5fc-0631-4002-b8aa-68add7a0b7ef"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Maior que 5.60"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "b8147138-cae8-4442-93a6-f518c0b290cf",
+                    "leftValue": "={{ $json.valor_convertido }}",
+                    "rightValue": 5.45,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Maior que 5.45"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "34523c20-e367-4bcf-a712-8ce7fe8c7eaf",
+                    "leftValue": "={{ $json.valor_convertido }}",
+                    "rightValue": 5.25,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Maior que 5.25"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "f217f398-9724-421e-b053-b2f0a9374565",
+                    "leftValue": "={{ $json.valor_convertido }}",
+                    "rightValue": 5.18,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Maior que 5.18"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        128,
+        -64
+      ],
+      "id": "c6eaa864-9aba-4f1f-9ea4-aaa82c090dc3",
+      "name": "Cotação do Dolar"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Monitora par-moedas": {
+      "main": [
+        [
+          {
+            "node": "Consultar cotação do par-moeda",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consultar cotação do par-moeda": {
+      "main": [
+        [
+          {
+            "node": "Conversão Dolar x Real",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conversão Dolar x Real": {
+      "main": [
+        [
+          {
+            "node": "Dolar acima de 5.25?",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Cotação do Dolar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "98d879cf-1f9b-47af-b734-3bf6d525c8a5",
+  "meta": {
+    "instanceId": "688a9cc9812a67f757fc09049ba8006059211ad2f3fb2a22702248b6f0f9fda5"
+  },
+  "id": "HFlhfLfSnH5txmdT",
+  "tags": []
+}
