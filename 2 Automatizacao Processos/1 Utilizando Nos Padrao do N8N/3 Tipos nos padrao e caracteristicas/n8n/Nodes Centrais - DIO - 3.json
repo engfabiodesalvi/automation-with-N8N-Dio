@@ -1,0 +1,91 @@
+{
+  "name": "Nodes Centrais - DIO - 3",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Tecnologia",
+        "height": 224,
+        "width": 192,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -576,
+        -176
+      ],
+      "typeVersion": 1,
+      "id": "fff92027-9b61-4512-aab7-e6817297f20c",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Financeiro",
+        "height": 224,
+        "width": 224
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -368,
+        -176
+      ],
+      "typeVersion": 1,
+      "id": "26bdd2c9-30df-4f49-969c-6a18dc91771e",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "nova_transacao",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -528,
+        -128
+      ],
+      "id": "ba538d73-95d1-422b-a5cd-59c6732a1613",
+      "name": "Monitora par-moedas",
+      "webhookId": "86b87dc5-8f36-4d76-b63f-23196579ef8b"
+    },
+    {
+      "parameters": {
+        "url": "=https://economia.awesomeapi.com.br/last/{{ $json.body['par-moeda'] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -304,
+        -128
+      ],
+      "id": "1c12f18c-381a-4cbd-be7b-97dace065ea5",
+      "name": "Consultar cotação do par-moeda"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Monitora par-moedas": {
+      "main": [
+        [
+          {
+            "node": "Consultar cotação do par-moeda",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "9b34486a-dc12-4afa-a515-b690bfbdb181",
+  "meta": {
+    "instanceId": "688a9cc9812a67f757fc09049ba8006059211ad2f3fb2a22702248b6f0f9fda5"
+  },
+  "id": "dYlrEj5CSRJYRxAI",
+  "tags": []
+}
