@@ -1,4 +1,4 @@
-# Utilizando Nós Parão do N8N
+# Utilizando Nós Padrão do N8N
 Como Você Vai Dominar Utilizando Nós Padrão do N8N
 
 * **Nodes Standart (Nós Padrão):** Presentes na maioria das aplicações **N8N**
