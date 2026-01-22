@@ -73,7 +73,7 @@ Adicione um nó do **Telegram** com a ação **Send a text message**.
     * **Creencial to connect with:** (configure uma credencial utilizando o **Access Token**)
 * **Resouce:** `Message`
 * **Operation:** `Send Message`
-* **Chat ID:** `@fabricadeonhecimentos` (o usuário precisar estar como administradr no grupo)
+* **Chat ID:** `@fabricadeonhecimentos` (o usuário precisar estar como administrador no grupo e o grupo deve estar como público)
 * **Text:** `Testando envio pelo n8n`
 * **Reply Markup:** `None`
 
