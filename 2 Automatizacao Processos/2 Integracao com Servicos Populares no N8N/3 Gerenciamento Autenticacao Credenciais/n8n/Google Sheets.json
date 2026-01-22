@@ -1,0 +1,83 @@
+{
+  "name": "Google Sheets",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "502db05a-16e4-4c77-9ac0-1a49eb705e25",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1lQzb2oUAlhV0FYKOI2Nyh6eui-AbGcJLFZBClJdygUI",
+          "mode": "list",
+          "cachedResultName": "Artigos DIO",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lQzb2oUAlhV0FYKOI2Nyh6eui-AbGcJLFZBClJdygUI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lQzb2oUAlhV0FYKOI2Nyh6eui-AbGcJLFZBClJdygUI/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Status",
+              "lookupValue": "Não enviado"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "d7b2c454-79e6-4c26-9767-1e8ff518f8c9",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fw4RCweCsyHTqQ9f",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "92ab6956-e0de-4ae9-8acb-6a53f316a6d9",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "688a9cc9812a67f757fc09049ba8006059211ad2f3fb2a22702248b6f0f9fda5"
+  },
+  "id": "1xaEg4L3ZskQvUqxp0LbZ",
+  "tags": []
+}
